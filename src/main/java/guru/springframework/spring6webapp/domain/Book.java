@@ -1,7 +1,7 @@
 package guru.springframework.spring6webapp.domain;
 
 import jakarta.persistence.*;
-
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -17,7 +17,7 @@ public class Book {
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
     inverseJoinColumns = @JoinColumn(name = "author_id"))
-    private Set<Authior> authors;
+    private Set<Authior> authors= new HashSet<>();;
     public Set<Authior> getAuthors() {
         return authors;
     }
@@ -64,6 +64,8 @@ public class Book {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Book)) return false;
+
 
         Book book = (Book) o;
 
