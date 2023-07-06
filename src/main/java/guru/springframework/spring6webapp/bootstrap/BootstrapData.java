@@ -1,6 +1,6 @@
 package guru.springframework.spring6webapp.bootstrap;
 
-import guru.springframework.spring6webapp.domain.Authior;
+import guru.springframework.spring6webapp.domain.Author;
 import guru.springframework.spring6webapp.domain.Book;
 import guru.springframework.spring6webapp.domain.Publisher;
 import guru.springframework.spring6webapp.repositories.AuthorRepository;
@@ -24,7 +24,7 @@ public class BootstrapData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Authior eric = new Authior();
+        Author eric = new Author();
         eric.setFirstName("Eric");
         eric.setLastName("Evans");
 
@@ -32,10 +32,10 @@ public class BootstrapData implements CommandLineRunner {
         ddd.setTitle("Domain Driven Design");
         ddd.setIsbn("123456");
 
-        Authior ericSaved = authorRepository.save(eric);
+        Author ericSaved = authorRepository.save(eric);
         Book dddSaved = bookRepository.save(ddd);
 
-        Authior rod = new Authior();
+        Author rod = new Author();
         rod.setFirstName("Rod");
         rod.setLastName("Johnson");
 
@@ -43,7 +43,7 @@ public class BootstrapData implements CommandLineRunner {
         noEJB.setTitle("J2EE Development without EJB");
         noEJB.setIsbn("54757585");
 
-        Authior rodSaved = authorRepository.save(rod);
+        Author rodSaved = authorRepository.save(rod);
         Book noEJBSaved = bookRepository.save(noEJB);
 
         ericSaved.getBooks().add(dddSaved);

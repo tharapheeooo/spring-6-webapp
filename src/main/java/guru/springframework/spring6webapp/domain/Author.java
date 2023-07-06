@@ -3,11 +3,10 @@ package guru.springframework.spring6webapp.domain;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 @Entity
-public class Authior {
+public class Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -64,7 +63,7 @@ public class Authior {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Authior authior = (Authior) o;
+        Author authior = (Author) o;
 
         return getId() != null ? getId().equals(authior.getId()) : authior.getId() == null;
     }
