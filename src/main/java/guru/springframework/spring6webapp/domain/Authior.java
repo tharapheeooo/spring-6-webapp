@@ -65,7 +65,7 @@ public class Authior {
 
         Authior authior = (Authior) o;
 
-        return getId() != null ? getId().equals(author.getId()) : author.getId() == null;
+        return getId() != null ? getId().equals(authior.getId()) : authior.getId() == null;
     }
 
     @Override
