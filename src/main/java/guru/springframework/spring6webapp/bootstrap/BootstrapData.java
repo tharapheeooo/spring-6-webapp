@@ -24,7 +24,7 @@ public class BootstrapData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Authior eric = new Authior();
+        Author eric = new Author();
         eric.setFirstName("Eric");
         eric.setLastName("Evans");
 
@@ -32,10 +32,10 @@ public class BootstrapData implements CommandLineRunner {
         ddd.setTitle("Domain Driven Design");
         ddd.setIsbn("123456");
 
-        Authior ericSaved = authorRepository.save(eric);
+        Author ericSaved = authorRepository.save(eric);
         Book dddSaved = bookRepository.save(ddd);
 
-        Authior rod = new Authior();
+        Author rod = new Author();
         rod.setFirstName("Rod");
         rod.setLastName("Johnson");
 
@@ -43,23 +43,30 @@ public class BootstrapData implements CommandLineRunner {
         noEJB.setTitle("J2EE Development without EJB");
         noEJB.setIsbn("54757585");
 
-        Authior rodSaved = authorRepository.save(rod);
+        Author rodSaved = authorRepository.save(rod);
         Book noEJBSaved = bookRepository.save(noEJB);
 
         ericSaved.getBooks().add(dddSaved);
         rodSaved.getBooks().add(noEJBSaved);
 
+        Publisher publisher = new Publisher();
+        publisher.setPublisherName("My Publisher");
+        publisher.setAddress("123 Main");
+        Publisher savedPublisher = publisherRepository.save(publisher);
+
+        dddSaved.setPublisher(savedPublisher);
+        noEJBSaved.setPublisher(savedPublisher);
+
         authorRepository.save(ericSaved);
         authorRepository.save(rodSaved);
+        bookRepository.save(dddSaved);
+        bookRepository.save(noEJBSaved);
 
         System.out.println("In Bootstrap");
         System.out.println("Author Count: " + authorRepository.count());
         System.out.println("Book Count: " + bookRepository.count());
 
-        Publisher publisher = new Publisher();
-        publisher.setPublisherName("My Publisher");
-        publisher.setAddress("123 Main");
-        publisherRepository.save(publisher);
+
 
         System.out.println("Publisher Count: " + publisherRepository.count());
 
